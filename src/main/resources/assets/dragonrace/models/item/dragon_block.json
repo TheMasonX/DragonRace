@@ -1,0 +1,6 @@
+{
+  "parent": "dragonrace:block/dragon_block",
+  "textures": {
+    "layer0": "dragonrace:item/dragon_block_item"
+  }
+}
