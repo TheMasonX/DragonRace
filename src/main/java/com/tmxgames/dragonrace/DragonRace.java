@@ -1,6 +1,7 @@
 package com.tmxgames.dragonrace;
 
 import com.mojang.logging.LogUtils;
+import com.tmxgames.dragonrace.block.ModBlocks;
 import com.tmxgames.dragonrace.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -36,12 +37,15 @@ public class DragonRace
     // Directly reference a slf4j logger
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final ModCreativeTab MOD_TAB = new ModCreativeTab(CreativeModeTab.TABS.length, DragonRace.MODID);
+
     public DragonRace()
     {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::commonSetup);
 
+        ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
@@ -68,6 +72,17 @@ public class DragonRace
         public static void onClientSetup(FMLClientSetupEvent event)
         {
             //ItemBlockRenderTypes.setRenderLayer(ModItems.DRAGON_FRUIT_CROP.get(), RenderType.cutout());
+        }
+    }
+
+    public static class ModCreativeTab extends CreativeModeTab {
+        public ModCreativeTab(int index, String label) {
+            super(index, label);
+        }
+
+        @Override
+        public ItemStack makeIcon() {
+            return new ItemStack(ModBlocks.DRAGON_BLOCK.get());
         }
     }
 }

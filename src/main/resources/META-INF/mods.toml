@@ -31,7 +31,7 @@ displayName="The Dragon Race" #mandatory
 # A text field displayed in the mod UI
 credits="Thanks to Nona-Mae for being my gamer girl!" #optional
 # A text field displayed in the mod UI
-authors="Nona, Dad, Samantha" #optional
+authors="Nona-Mae, Dad, Samantha" #optional
 # Display Test controls the display for your mod in the server connection screen
 # MATCH_VERSION means that your mod will cause a red X if the versions on client and server differ. This is the default behaviour and should be what you choose if you have server and client elements to your mod.
 # IGNORE_SERVER_VERSION means that your mod will not cause a red X if it's present on the server but not on the client. This is what you should use if you're a server only mod.
@@ -43,6 +43,8 @@ authors="Nona, Dad, Samantha" #optional
 # The description text for the mod (multi line!) (#mandatory)
 description='''
 Nona's custom dragons! Welcome to the Dragon Race!
+
+This area needs more text please Nona.
 '''
 # A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
 [[dependencies.dragonrace]] #optional
