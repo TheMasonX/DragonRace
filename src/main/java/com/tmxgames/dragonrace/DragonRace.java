@@ -3,6 +3,8 @@ package com.tmxgames.dragonrace;
 import com.mojang.logging.LogUtils;
 import com.tmxgames.dragonrace.item.ModItems;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -65,7 +67,7 @@ public class DragonRace
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event)
         {
-            // Some client setup code
+            //ItemBlockRenderTypes.setRenderLayer(ModItems.DRAGON_FRUIT_CROP.get(), RenderType.cutout());
         }
     }
 }

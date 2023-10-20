@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "dragonrace:dragon_block"
+    }
+  ],
+  "result": {
+    "item": "dragonrace:dragon_ore",
+    "count": 9
+  }
+}

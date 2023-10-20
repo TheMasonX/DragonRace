@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "###",
+    "###",
+    "###"
+  ],
+  "key": {
+    "#": {
+      "item": "dragonrace:dragon_ore"
+    }
+  },
+  "result": {
+    "item": "dragonrace:dragon_block"
+  }
+}
