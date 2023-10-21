@@ -2,12 +2,16 @@ package com.tmxgames.dragonrace;
 
 import com.mojang.logging.LogUtils;
 import com.tmxgames.dragonrace.block.ModBlocks;
+import com.tmxgames.dragonrace.entity.ModEntities;
+import com.tmxgames.dragonrace.entity.NonaDragon;
+import com.tmxgames.dragonrace.entity.NonaDragonRenderer;
 import com.tmxgames.dragonrace.item.ModItems;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
@@ -15,7 +19,9 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -35,7 +41,7 @@ public class DragonRace
     // Define mod id in a common place for everything to reference
     public static final String MODID = "dragonrace";
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final ModCreativeTab MOD_TAB = new ModCreativeTab(CreativeModeTab.TABS.length, DragonRace.MODID);
 
@@ -47,6 +53,7 @@ public class DragonRace
 
         ModBlocks.register(modEventBus);
         ModItems.register(modEventBus);
+        ModEntities.register(modEventBus);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
@@ -73,6 +80,20 @@ public class DragonRace
         {
             //ItemBlockRenderTypes.setRenderLayer(ModItems.DRAGON_FRUIT_CROP.get(), RenderType.cutout());
         }
+
+        @SubscribeEvent
+        public static void entityAttributeEvent(EntityAttributeCreationEvent event)
+        {
+            event.put(ModEntities.NONA_DRAGON.get(), NonaDragon.setAttributes());
+        }
+
+        @SubscribeEvent
+        public static void entityRenderers(EntityRenderersEvent.RegisterRenderers event)
+        {
+            event.registerEntityRenderer(ModEntities.NONA_DRAGON.get(), NonaDragonRenderer::new);
+            LOGGER.debug("entityRenderers!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+        }
+
     }
 
     public static class ModCreativeTab extends CreativeModeTab {
