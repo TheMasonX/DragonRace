@@ -84,7 +84,7 @@ public class DragonRace
         @SubscribeEvent
         public static void entityAttributeEvent(EntityAttributeCreationEvent event)
         {
-            event.put(ModEntities.NONA_DRAGON.get(), NonaDragon.setAttributes());
+            event.put(ModEntities.NONA_DRAGON.get(), NonaDragon.createAttributes().build());
         }
 
         @SubscribeEvent
